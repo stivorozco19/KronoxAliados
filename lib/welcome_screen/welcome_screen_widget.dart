@@ -286,7 +286,7 @@ class _WelcomeScreenWidgetState extends State<WelcomeScreenWidget> {
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 40,
-                                color: Color(0x00EE8B60),
+                                color: FlutterFlowTheme.tertiaryColor,
                                 textStyle: FlutterFlowTheme.subtitle2.override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.primaryColor,
