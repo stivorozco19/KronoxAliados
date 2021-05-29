@@ -1,0 +1,2 @@
+# KronoxAliados
+Kronox Aliados FlutterFlow
