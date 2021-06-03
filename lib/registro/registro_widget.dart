@@ -1,5 +1,7 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,7 @@ class RegistroWidget extends StatefulWidget {
 
 class _RegistroWidgetState extends State<RegistroWidget> {
   TextEditingController txtEmailController;
+  TextEditingController txtNombreController;
   TextEditingController txtPasswordController;
   TextEditingController txtRepPasswordController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -22,6 +25,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   void initState() {
     super.initState();
     txtEmailController = TextEditingController();
+    txtNombreController = TextEditingController();
     txtPasswordController = TextEditingController();
     txtRepPasswordController = TextEditingController();
   }
@@ -51,6 +55,52 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                   width: MediaQuery.of(context).size.width,
                   height: 100,
                   fit: BoxFit.contain,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                child: TextFormField(
+                  controller: txtNombreController,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    labelText: 'Nombre completo',
+                    labelStyle: FlutterFlowTheme.subtitle1.override(
+                      fontFamily: 'Roboto',
+                      color: FlutterFlowTheme.tertiaryColor,
+                      fontWeight: FontWeight.normal,
+                    ),
+                    hintText: 'ejemplo@correo.com',
+                    hintStyle: FlutterFlowTheme.subtitle1.override(
+                      fontFamily: 'Roboto',
+                      color: FlutterFlowTheme.tertiaryColor,
+                      fontWeight: FontWeight.normal,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF9E9E9E),
+                        width: 1,
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xFF9E9E9E),
+                        width: 1,
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                  ),
+                  style: FlutterFlowTheme.subtitle1.override(
+                    fontFamily: 'Roboto',
+                    color: FlutterFlowTheme.tertiaryColor,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               ),
               Padding(
@@ -203,6 +253,18 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                     if (user == null) {
                       return;
                     }
+
+                    final createdTime = getCurrentTimestamp;
+                    final displayName = txtNombreController.text;
+
+                    final usersRecordData = createUsersRecordData(
+                      createdTime: createdTime,
+                      displayName: displayName,
+                    );
+
+                    await UsersRecord.collection
+                        .doc(user.uid)
+                        .update(usersRecordData);
 
                     await Navigator.pushAndRemoveUntil(
                       context,

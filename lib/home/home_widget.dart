@@ -104,7 +104,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             iconSize: 30,
                                           ),
                                           Text(
-                                            homeEmpresasRecord.name,
+                                            'Nombre empresa',
                                             style: FlutterFlowTheme.bodyText1
                                                 .override(
                                               fontFamily: 'Poppins',
@@ -278,7 +278,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                     ),
                     Text(
-                      homeEmpresasRecord.name,
+                      'Prueba',
                       style: FlutterFlowTheme.title3.override(
                         fontFamily: 'Poppins',
                         color: FlutterFlowTheme.tertiaryColor,
