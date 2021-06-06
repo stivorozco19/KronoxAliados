@@ -18,7 +18,9 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   TextEditingController txtEmailController;
   TextEditingController txtNombreController;
   TextEditingController txtPasswordController;
+  bool passwordVisibility;
   TextEditingController txtRepPasswordController;
+  bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -27,7 +29,9 @@ class _RegistroWidgetState extends State<RegistroWidget> {
     txtEmailController = TextEditingController();
     txtNombreController = TextEditingController();
     txtPasswordController = TextEditingController();
+    passwordVisibility = false;
     txtRepPasswordController = TextEditingController();
+    passwordVisibility = false;
   }
 
   @override
@@ -153,7 +157,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: TextFormField(
                   controller: txtPasswordController,
-                  obscureText: true,
+                  obscureText: !passwordVisibility,
                   decoration: InputDecoration(
                     labelText: 'Nueva contraseña',
                     labelStyle: FlutterFlowTheme.subtitle1.override(
@@ -181,6 +185,17 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                         topRight: Radius.circular(4.0),
                       ),
                     ),
+                    suffixIcon: InkWell(
+                      onTap: () => setState(
+                        () => passwordVisibility = !passwordVisibility,
+                      ),
+                      child: Icon(
+                        passwordVisibility
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        size: 22,
+                      ),
+                    ),
                   ),
                   style: FlutterFlowTheme.subtitle1.override(
                     fontFamily: 'Roboto',
@@ -193,7 +208,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: TextFormField(
                   controller: txtRepPasswordController,
-                  obscureText: true,
+                  obscureText: !passwordVisibility,
                   decoration: InputDecoration(
                     labelText: 'Repita la contraseña',
                     labelStyle: FlutterFlowTheme.subtitle1.override(
@@ -219,6 +234,17 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(4.0),
                         topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                    suffixIcon: InkWell(
+                      onTap: () => setState(
+                        () => passwordVisibility = !passwordVisibility,
+                      ),
+                      child: Icon(
+                        passwordVisibility
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        size: 22,
                       ),
                     ),
                   ),
