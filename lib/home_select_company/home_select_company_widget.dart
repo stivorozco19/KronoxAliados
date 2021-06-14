@@ -47,11 +47,7 @@ class _HomeSelectCompanyWidgetState extends State<HomeSelectCompanyWidget> {
                 color: FlutterFlowTheme.secondaryColor,
               ),
               child: StreamBuilder<List<RelationUserCompanyRecord>>(
-                stream: queryRelationUserCompanyRecord(
-                  queryBuilder: (relationUserCompanyRecord) =>
-                      relationUserCompanyRecord.where('idUser',
-                          isEqualTo: currentUserReference),
-                ),
+                stream: queryRelationUserCompanyRecord(),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
