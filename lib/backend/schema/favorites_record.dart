@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong/latlong.dart';
 
 import 'schema_util.dart';
 import 'serializers.dart';
@@ -46,7 +47,7 @@ Map<String, dynamic> createFavoritesRecordData({
   DocumentReference idUser,
   bool isActive,
 }) =>
-    serializers.serializeWith(
+    serializers.toFirestore(
         FavoritesRecord.serializer,
         FavoritesRecord((f) => f
           ..idEmpresa = idEmpresa

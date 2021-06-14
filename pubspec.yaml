@@ -35,11 +35,15 @@ dependencies:
   google_fonts:
   google_sign_in: ^4.0.16
   image_picker: ^0.6.7+22
+  intl:
   json_serializable: ^3.5.1
+  latlong:
   mime_type: ^1.0.0
+  page_transition:
   rxdart: ^0.25.0
   sign_in_with_apple: ^2.5.4
   smooth_page_indicator:
+  timeago:
   url_launcher:
 
 

@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong/latlong.dart';
 
 import 'schema_util.dart';
 import 'serializers.dart';
@@ -20,7 +21,7 @@ abstract class ImagesEmpresasRecord
   DocumentReference get createBy;
 
   @nullable
-  Timestamp get createAt;
+  DateTime get createAt;
 
   @nullable
   DocumentReference get idEmpresa;
@@ -48,10 +49,10 @@ abstract class ImagesEmpresasRecord
 Map<String, dynamic> createImagesEmpresasRecordData({
   String image,
   DocumentReference createBy,
-  Timestamp createAt,
+  DateTime createAt,
   DocumentReference idEmpresa,
 }) =>
-    serializers.serializeWith(
+    serializers.toFirestore(
         ImagesEmpresasRecord.serializer,
         ImagesEmpresasRecord((i) => i
           ..image = image

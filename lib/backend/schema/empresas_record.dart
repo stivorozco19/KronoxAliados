@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong/latlong.dart';
 
 import 'schema_util.dart';
 import 'serializers.dart';
@@ -17,7 +18,7 @@ abstract class EmpresasRecord
   String get addres;
 
   @nullable
-  Timestamp get createAt;
+  DateTime get createAt;
 
   @nullable
   DocumentReference get createBy;
@@ -93,7 +94,7 @@ abstract class EmpresasRecord
 
 Map<String, dynamic> createEmpresasRecordData({
   String addres,
-  Timestamp createAt,
+  DateTime createAt,
   DocumentReference createBy,
   String description,
   String name,
@@ -108,7 +109,7 @@ Map<String, dynamic> createEmpresasRecordData({
   String tipoDocumento,
   String numeroDocumento,
 }) =>
-    serializers.serializeWith(
+    serializers.toFirestore(
         EmpresasRecord.serializer,
         EmpresasRecord((e) => e
           ..addres = addres

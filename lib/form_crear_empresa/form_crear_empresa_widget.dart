@@ -26,14 +26,13 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
   TextEditingController textController4;
   TextEditingController textController5;
   TextEditingController textController6;
-  String uploadedFileUrl1;
-  String uploadedFileUrl2;
+  String uploadedFileUrl1 = '';
+  String uploadedFileUrl2 = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    dropDownValue = 'NIT';
     textController1 = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();
@@ -76,7 +75,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -86,7 +85,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -116,7 +115,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -126,7 +125,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -156,7 +155,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -166,7 +165,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -196,7 +195,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -206,7 +205,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -272,7 +271,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -282,7 +281,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -312,7 +311,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -322,7 +321,7 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
                     ),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: Colors.transparent,
+                        color: Color(0x00000000),
                         width: 1,
                       ),
                       borderRadius: const BorderRadius.only(

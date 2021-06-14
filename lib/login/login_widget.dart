@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import '../registro/registro_widget.dart';
@@ -15,6 +16,7 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   TextEditingController txtPasswordController;
+  bool passwordVisibility;
   TextEditingController txtUsernameController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -22,6 +24,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   void initState() {
     super.initState();
     txtPasswordController = TextEditingController();
+    passwordVisibility = false;
     txtUsernameController = TextEditingController();
   }
 
@@ -95,7 +98,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: TextFormField(
                   controller: txtPasswordController,
-                  obscureText: true,
+                  obscureText: !passwordVisibility,
                   decoration: InputDecoration(
                     labelText: 'Contraseña',
                     labelStyle: FlutterFlowTheme.subtitle1.override(
@@ -121,6 +124,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(4.0),
                         topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                    suffixIcon: InkWell(
+                      onTap: () => setState(
+                        () => passwordVisibility = !passwordVisibility,
+                      ),
+                      child: Icon(
+                        passwordVisibility
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        size: 22,
                       ),
                     ),
                   ),

@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong/latlong.dart';
 
 import 'schema_util.dart';
 import 'serializers.dart';
@@ -18,7 +19,7 @@ abstract class CompanyVerificationRecord
   DocumentReference get idEmpresa;
 
   @nullable
-  Timestamp get createAt;
+  DateTime get createAt;
 
   @nullable
   String get status;
@@ -48,11 +49,11 @@ abstract class CompanyVerificationRecord
 
 Map<String, dynamic> createCompanyVerificationRecordData({
   DocumentReference idEmpresa,
-  Timestamp createAt,
+  DateTime createAt,
   String status,
   DocumentReference attendedBy,
 }) =>
-    serializers.serializeWith(
+    serializers.toFirestore(
         CompanyVerificationRecord.serializer,
         CompanyVerificationRecord((c) => c
           ..idEmpresa = idEmpresa
