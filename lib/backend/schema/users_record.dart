@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong/latlong.dart';
 
 import 'schema_util.dart';
 import 'serializers.dart';
@@ -13,7 +14,7 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'created_time')
-  Timestamp get createdTime;
+  DateTime get createdTime;
 
   @nullable
   @BuiltValueField(wireName: 'display_name')
@@ -34,6 +35,10 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get uid;
 
   @nullable
+  @BuiltValueField(wireName: 'phone_number')
+  String get phoneNumber;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -42,7 +47,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..email = ''
     ..photoUrl = ''
     ..celPhone = ''
-    ..uid = '';
+    ..uid = ''
+    ..phoneNumber = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -57,14 +63,15 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 }
 
 Map<String, dynamic> createUsersRecordData({
-  Timestamp createdTime,
+  DateTime createdTime,
   String displayName,
   String email,
   String photoUrl,
   String celPhone,
   String uid,
+  String phoneNumber,
 }) =>
-    serializers.serializeWith(
+    serializers.toFirestore(
         UsersRecord.serializer,
         UsersRecord((u) => u
           ..createdTime = createdTime
@@ -72,7 +79,8 @@ Map<String, dynamic> createUsersRecordData({
           ..email = email
           ..photoUrl = photoUrl
           ..celPhone = celPhone
-          ..uid = uid));
+          ..uid = uid
+          ..phoneNumber = phoneNumber));
 
 UsersRecord get dummyUsersRecord {
   final builder = UsersRecordBuilder()
@@ -81,7 +89,8 @@ UsersRecord get dummyUsersRecord {
     ..email = dummyString
     ..photoUrl = dummyImagePath
     ..celPhone = dummyString
-    ..uid = dummyString;
+    ..uid = dummyString
+    ..phoneNumber = dummyString;
   return builder.build();
 }
 

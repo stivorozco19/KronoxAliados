@@ -123,9 +123,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => RecursosWidget(
-                                      idEmpresa: widget.idEmpresa,
-                                    ),
+                                    builder: (context) => RecursosWidget(),
                                   ),
                                 );
                               },

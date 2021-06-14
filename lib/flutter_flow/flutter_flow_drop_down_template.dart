@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class FlutterFlowDropDown extends StatefulWidget {
   const FlutterFlowDropDown({
+    this.initialOption,
     @required this.options,
     @required this.onChanged,
     this.icon,
@@ -16,6 +17,7 @@ class FlutterFlowDropDown extends StatefulWidget {
     this.margin,
   });
 
+  final String initialOption;
   final List<String> options;
   final Function(String) onChanged;
   final Widget icon;
@@ -35,13 +37,14 @@ class FlutterFlowDropDown extends StatefulWidget {
 
 class _FlutterFlowDropDownState extends State<FlutterFlowDropDown> {
   String dropDownValue;
-  List<String> effectiveOptions;
+  List<String> get effectiveOptions =>
+      widget.options.isEmpty ? ['[Option]'] : widget.options;
 
   @override
   void initState() {
-    effectiveOptions = widget.options.isEmpty ? ['[Option]'] : widget.options;
-    dropDownValue = effectiveOptions.first;
     super.initState();
+    dropDownValue = widget.initialOption;
+    widget.onChanged(dropDownValue);
   }
 
   @override
@@ -58,7 +61,8 @@ class _FlutterFlowDropDownState extends State<FlutterFlowDropDown> {
       child: Padding(
         padding: widget.margin,
         child: DropdownButton<String>(
-          value: dropDownValue,
+          value:
+              effectiveOptions.contains(dropDownValue) ? dropDownValue : null,
           items: effectiveOptions
               .map((e) => DropdownMenuItem(
                     value: e,

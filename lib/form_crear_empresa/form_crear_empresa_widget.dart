@@ -26,14 +26,13 @@ class _FormCrearEmpresaWidgetState extends State<FormCrearEmpresaWidget> {
   TextEditingController textController4;
   TextEditingController textController5;
   TextEditingController textController6;
-  String uploadedFileUrl1;
-  String uploadedFileUrl2;
+  String uploadedFileUrl1 = '';
+  String uploadedFileUrl2 = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    dropDownValue = 'NIT';
     textController1 = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();

@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong/latlong.dart';
 
 import 'schema_util.dart';
 import 'serializers.dart';
@@ -25,11 +26,11 @@ abstract class CitasRecord implements Built<CitasRecord, CitasRecordBuilder> {
 
   @nullable
   @BuiltValueField(wireName: 'date_time_start')
-  Timestamp get dateTimeStart;
+  DateTime get dateTimeStart;
 
   @nullable
   @BuiltValueField(wireName: 'date_time_end')
-  Timestamp get dateTimeEnd;
+  DateTime get dateTimeEnd;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -54,10 +55,10 @@ Map<String, dynamic> createCitasRecordData({
   DocumentReference idEmpresa,
   DocumentReference idServicio,
   DocumentReference idRecurso,
-  Timestamp dateTimeStart,
-  Timestamp dateTimeEnd,
+  DateTime dateTimeStart,
+  DateTime dateTimeEnd,
 }) =>
-    serializers.serializeWith(
+    serializers.toFirestore(
         CitasRecord.serializer,
         CitasRecord((c) => c
           ..idUser = idUser

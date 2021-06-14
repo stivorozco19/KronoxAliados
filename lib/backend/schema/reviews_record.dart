@@ -2,6 +2,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:latlong/latlong.dart';
 
 import 'schema_util.dart';
 import 'serializers.dart';
@@ -16,7 +17,7 @@ abstract class ReviewsRecord
   DocumentReference get idUser;
 
   @nullable
-  Timestamp get createAt;
+  DateTime get createAt;
 
   @nullable
   DocumentReference get idEmpresa;
@@ -49,12 +50,12 @@ abstract class ReviewsRecord
 
 Map<String, dynamic> createReviewsRecordData({
   DocumentReference idUser,
-  Timestamp createAt,
+  DateTime createAt,
   DocumentReference idEmpresa,
   double rating,
   String review,
 }) =>
-    serializers.serializeWith(
+    serializers.toFirestore(
         ReviewsRecord.serializer,
         ReviewsRecord((r) => r
           ..idUser = idUser

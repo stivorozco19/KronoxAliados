@@ -18,7 +18,7 @@ class CuentaWidget extends StatefulWidget {
 }
 
 class _CuentaWidgetState extends State<CuentaWidget> {
-  String uploadedFileUrl;
+  String uploadedFileUrl = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
