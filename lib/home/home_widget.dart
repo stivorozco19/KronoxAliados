@@ -41,7 +41,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 800,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.secondaryColor,
                   ),

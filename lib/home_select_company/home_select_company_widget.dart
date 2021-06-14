@@ -94,86 +94,70 @@ class _HomeSelectCompanyWidgetState extends State<HomeSelectCompanyWidget> {
                             decoration: BoxDecoration(
                               color: Color(0xFF003B58),
                             ),
-                            child: StreamBuilder<EmpresasRecord>(
-                              stream: EmpresasRecord.getDocument(
-                                  listViewRelationUserCompanyRecord.idEmpresa),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                      child: CircularProgressIndicator());
-                                }
-                                final rowEmpresasRecord = snapshot.data;
-                                return Padding(
-                                  padding: EdgeInsets.fromLTRB(5, 1, 5, 10),
-                                  child: Row(
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(5, 1, 5, 10),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 5, 20, 5),
+                                    child: Container(
+                                      width: 80,
+                                      height: 80,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        'https://picsum.photos/seed/307/600',
+                                      ),
+                                    ),
+                                  ),
+                                  Column(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding:
-                                            EdgeInsets.fromLTRB(0, 5, 20, 5),
-                                        child: Container(
-                                          width: 80,
-                                          height: 80,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Image.network(
-                                            rowEmpresasRecord.logo,
+                                            EdgeInsets.fromLTRB(0, 0, 0, 10),
+                                        child: Text(
+                                          listViewRelationUserCompanyRecord.rol,
+                                          style: FlutterFlowTheme.bodyText1
+                                              .override(
+                                            fontFamily: 'Poppins',
+                                            color:
+                                                FlutterFlowTheme.tertiaryColor,
                                           ),
                                         ),
                                       ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                0, 0, 0, 10),
-                                            child: Text(
-                                              rowEmpresasRecord.name,
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Poppins',
-                                                color: FlutterFlowTheme
-                                                    .tertiaryColor,
-                                              ),
-                                            ),
-                                          ),
-                                          Text(
-                                            rowEmpresasRecord.addres,
-                                            style: FlutterFlowTheme.bodyText1
-                                                .override(
-                                              fontFamily: 'Poppins',
-                                              color: FlutterFlowTheme
-                                                  .tertiaryColor,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      Expanded(
-                                        child: Align(
-                                          alignment: Alignment(1, 0),
-                                          child: Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                0, 0, 20, 0),
-                                            child: Icon(
-                                              Icons.arrow_forward,
-                                              color: FlutterFlowTheme
-                                                  .tertiaryColor,
-                                              size: 24,
-                                            ),
-                                          ),
+                                      Text(
+                                        'Hello World',
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.tertiaryColor,
                                         ),
                                       )
                                     ],
                                   ),
-                                );
-                              },
+                                  Expanded(
+                                    child: Align(
+                                      alignment: Alignment(1, 0),
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                        child: Icon(
+                                          Icons.arrow_forward,
+                                          color: FlutterFlowTheme.tertiaryColor,
+                                          size: 24,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
